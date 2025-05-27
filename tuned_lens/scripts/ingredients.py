@@ -75,8 +75,7 @@ class Data:
         """Load the dataset, tokenize it and compute nats_to_bpb."""
         logger.info(f"Loading dataset '{' '.join(self.name)}'")
         logger.debug(f"Using split '{self.split}', revision '{self.revision}'")
-
-        if len(self.name) == 1 and self.name[0].endswith(".jsonl"):
+        if len(self.name) == 1 and (self.name[0].endswith(".jsonl") or self.name[0].endswith(".json")):
             dataset = Dataset.from_json(self.name[0])
             assert isinstance(dataset, Dataset)
         else:
