@@ -334,7 +334,7 @@ class Train:
 
         logger.debug(f"Creating data loader and setting seed to {self.seed} ...")
         dl = self.dist.dataloader(data)
-        dl.seed(self.seed)
+        th.manual_seed(self.seed)
         logger.debug("Creating optimizer and scheduler ...")
         params = [p for p in lens.parameters() if p.requires_grad]
         opt = self.opt.create_optim(params)
